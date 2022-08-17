@@ -19,7 +19,6 @@ export default function PostPage() {
 
   return (
     <div id="PostPage">
-      <button onClick={() => navigate("/")}>HOME</button>
       {!postData.post ? (
         "loading..."
       ) : (
