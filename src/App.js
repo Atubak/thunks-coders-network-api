@@ -7,6 +7,7 @@ import Toolbar from "./components/Toolbar";
 import { useDispatch } from "react-redux";
 import { bootstrapLoginState } from "./store/auth/actions";
 import { useEffect } from "react";
+import NewPost from "./pages/NewPost";
 
 function App() {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ function App() {
         <Route path={"/"} element={<HomePage />} />
         <Route path={"/post/:id"} element={<PostPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/newpost" element={<NewPost />} />
       </Routes>
     </div>
   );

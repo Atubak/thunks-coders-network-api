@@ -54,7 +54,20 @@ export function bootstrapLoginState() {
 export const createAcc =
   (email, password, name) => async (dispatch, getState) => {
     console.log("createthunk", email, password, name);
+    try {
+      dispatch(loading(true));
+      const response = await axios.post(`${API_URL}/signup`, {
+        name: name,
+        email: email,
+        password: password,
+      });
+      console.log("created user, show token:", response.data);
 
-    const response = axios.get(`${API_URL}/`);
+      localStorage.setItem("jwt", response.data.jwt);
+      dispatch(storeToken(response.data.jwt));
+      dispatch(loading(false));
+    } catch (e) {
+      console.log(e.message);
+    }
   };
 //WRITING THIS API REQUEST NOW

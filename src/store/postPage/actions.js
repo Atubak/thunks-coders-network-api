@@ -19,3 +19,7 @@ export function fetchPost(id) {
     dispatch(postFullyFetched(combinedRes));
   };
 }
+
+export function createPost(post) {
+  // build a post req here that sends an object with title and content properties. send it to api and thats it, no reducer needed
+}

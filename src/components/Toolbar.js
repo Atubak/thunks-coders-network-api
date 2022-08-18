@@ -13,6 +13,7 @@ export default function Toolbar() {
     <span>
       <pre>lol welcome back {me.name}</pre>
       <button>log out</button>
+      <button onClick={() => navigate("/newpost")}>Add New Post</button>
     </span>
   );
   return (
