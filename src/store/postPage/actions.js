@@ -22,4 +22,11 @@ export function fetchPost(id) {
 
 export function createPost(post) {
   // build a post req here that sends an object with title and content properties. send it to api and thats it, no reducer needed
+  return async function createPostThunk(dispatch, getState) {
+    axios.post(
+      `${API_URL}/posts`,
+      { title: post.title, content: post.content },
+      { headers: { Authorization: `Bearer ${post.token}` } }
+    );
+  };
 }

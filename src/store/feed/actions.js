@@ -11,7 +11,7 @@ export async function fetchPosts(dispatch, getState) {
     const response = await axios.get(
       `${API_URL}/posts?offset=${offset}&limit=5`
     );
-    console.log(response.data);
+    console.log("checking");
     const posts = response.data.rows;
     dispatch(postsFetched(posts));
   } catch (e) {

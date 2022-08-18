@@ -1,18 +1,24 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectMe } from "../store/auth/selectors";
+import { createPost } from "../store/postPage/actions";
 
 export default function NewPost() {
   const user = useSelector(selectMe());
-  const [input, setInput] = useState({ title: "", content: "" });
+  const dispatch = useDispatch();
+  const initialInput = { title: "", content: "" };
+  const [input, setInput] = useState(initialInput);
 
   const formController = (e) => {
-    setInput({ ...input, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setInput({ ...input, [name]: value });
   };
 
   const submit = (e) => {
     e.preventDefault();
     console.log("input", input);
+    dispatch(createPost({ ...input, token: localStorage.jwt }));
+    setInput(initialInput);
   };
   return (
     <div id="NewPost">
