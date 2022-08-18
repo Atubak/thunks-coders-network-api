@@ -10,6 +10,9 @@ const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
+    loading: (state, action) => {
+      state.loading = action.payload;
+    },
     storeToken: (state, action) => {
       state.accessToken = action.payload;
     },
@@ -19,6 +22,6 @@ const authSlice = createSlice({
   },
 });
 
-export const { storeToken, storeUser } = authSlice.actions;
+export const { storeToken, storeUser, loading } = authSlice.actions;
 
 export default authSlice.reducer;
