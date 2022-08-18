@@ -5,11 +5,13 @@ import { fetchPost } from "../store/postPage/actions";
 import { selectPostAndComments } from "../store/postPage/selectors";
 import ReactMarkdown from "react-markdown";
 import moment from "moment";
+import { selectMe } from "../store/auth/selectors";
 
 export default function PostPage() {
   const { id } = useParams();
   const dispatch = useDispatch();
   const postData = useSelector(selectPostAndComments());
+  const me = useSelector(selectMe());
   console.log(postData);
 
   useEffect(() => {
@@ -36,6 +38,14 @@ export default function PostPage() {
           <ReactMarkdown children={postData.post.content} />
 
           <h2>Comments</h2>
+          <div id="commentForm">
+            <form>
+              <label>
+                write comment here:
+                <input type="text" />
+              </label>
+            </form>
+          </div>
           <p>
             {postData.comments.rows.map((comment) => {
               return (
