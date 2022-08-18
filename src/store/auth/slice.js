@@ -9,9 +9,16 @@ const initialState = {
 const authSlice = createSlice({
   name: "auth",
   initialState,
-  reducers: {},
+  reducers: {
+    storeToken: (state, action) => {
+      state.accessToken = action.payload;
+    },
+    storeUser: (state, action) => {
+      state.me = action.payload;
+    },
+  },
 });
 
-export const {} = authSlice.actions;
+export const { storeToken, storeUser } = authSlice.actions;
 
 export default authSlice.reducer;
